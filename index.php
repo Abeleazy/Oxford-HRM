@@ -61,6 +61,12 @@
             if(isset($_GET['view_staffs'])) {
                 include("view_staffs.php");
             }
+            if(isset($_GET['delete_staff'])){
+                include("delete_staff.php");
+            }
+            if(isset($_GET['edit_staff'])){
+                include("edit_staff.php");
+            }
         ?>
         <footer>
             <p>Copyright <a href="#" title="">Foxio</a> &copy; 2019</p>

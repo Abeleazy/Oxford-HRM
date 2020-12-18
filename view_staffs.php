@@ -1,91 +1,86 @@
 <div class="row justify-content-center">
     <div class="col-md-12">
-    </li><h4 style="color:#fff;"><a href="index.php?dashboard">Dashboard</a> /<a href="#"> View Products</h4></a>
     </div>
 
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body" style="overflow-x:auto;">
+            <h4 class="mt-0 header-title"> Staff Data Table</h4>
+            
+            <div class="table-responsive">
+                <table class="table" >
+                    <thead>
+                        <tr>
+                            <th>Staff ID</th>
+                            <th>Names</th>
+                            <th>Email</th>
+                            <th>Phone no.</th>
+                            <th>Group</th>
+                            <th>Subsidiary</th>
+                            <th>Address</th>
+                            <th>Position</th>
+                            <th>Image</th>
+                            <th>Unique ID</th>
+                            <th>Actions</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            $i = 0;
 
-                    <h4 class="mt-0 header-title">Default Datatable</h4>
-                    
+                            $get_staff = "select * from data";
 
-                    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                        <thead>
-                            <tr>
-                                <th>Staff ID</th>
-                                <th>Names</th>
-                                <th>Email</th>
-                                <th>Phone no.</th>
-                                <th>Group</th>
-                                <th>Subsidiary</th>
-                                <th>Address</th>
-                                <th>Position</th>
-                                <th>Image</th>
-                                <th>Unique ID</th>
-                                <th>Actions</th>
+                            $run_staff = mysqli_query($con,$get_staff);
+
+                            while($row_staff = mysqli_fetch_array($run_staff)){
+                                $staff_id = $row_staff['staff_id'];
+
+                                $fname = $row_staff['fname'];
                                 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                                $i = 0;
+                                $lname = $row_staff['lname'];
 
-                                $get_staff = "select * from data";
+                                $email = $row_staff['email'];
 
-                                $run_staff = mysqli_query($con,$get_staff);
+                                $phone = $row_staff['phone'];
 
-                                while($row_staff = mysqli_fetch_array($run_staff)){
-                                    $staff_id = $row_staff['staff_id'];
+                                $group = $row_staff['group'];
 
-                                    $fname = $row_staff['fname'];
-                                    
-                                    $lname = $row_staff['lname'];
+                                $subsidiary = $row_staff['subsidiary'];
 
-                                    $email = $row_staff['email'];
+                                $address = $row_staff['address'];
 
-                                    $phone = $row_staff['phone'];
+                                $education = $row_staff['education'];
 
-                                    $group = $row_staff['group'];
+                                $passport = $row_staff['passport'];
 
-                                    $subsidiary = $row_staff['subsidiary'];
+                                $uniqueid = $row_staff['uniqueid'];
 
-                                    $address = $row_staff['address'];
+                                $i++;
 
-                                    $education = $row_staff['education'];
+                                ?>
 
-                                    $passport = $row_staff['passport'];
+                                <tr>
+                                    <td><?php echo $i; ?></td>
+                                    <td><?php echo $fname.' &nbsp;'. $lname; ?></td>
+                                    <td><?php echo $email; ?></td>
+                                    <td><?php echo $phone; ?></td>
+                                    <td><?php echo $group; ?></td>
+                                    <td><?php echo $subsidiary; ?></td>
+                                    <td><?php echo $address ?></td>
+                                    <td><?php echo $education; ?></td>
+                                    <td><?php  ?></td>
+                                    <td><?php echo $uniqueid; ?></td>
+                                    <td>
+                                        <a href="index.php?delete_staff=<?php echo $staff_id; ?>"><i style="font-size: 23px;" class="fa fa-trash"></i></a>
+                                        &nbsp;&nbsp;
+                                        <a href="index.php?edit_staff=<?php echo $staff_id; ?>"><i style="font-size: 23px;" class="fa fa-pencil-square-o"></i></a>
+                                    </td>
+                                </tr>
 
-                                    $uniqueid = $row_staff['uniqueid'];
-
-                                    $i++;
-
-                                    ?>
-
-                                    <tr>
-                                        <td><?php echo $i; ?></td>
-                                        <td><?php echo $fname.' &nbsp;'. $lname; ?></td>
-                                        <td><?php echo $email; ?></td>
-                                        <td><?php echo $phone; ?></td>
-                                        <td><?php echo $group; ?></td>
-                                        <td><?php echo $subsidiary; ?></td>
-                                        <td><?php echo $address ?></td>
-                                        <td><?php echo $education; ?></td>
-                                        <td><?php  ?></td>
-                                        <td><?php echo $uniqueid; ?></td>
-                                        <td><a href="">delete</a></td>
-                                    </tr>
-
-                            <?php
-                                }
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
+                        <?php
+                            }
+                        ?>
+                    </tbody>
+                </table>
             </div>
-        </div>
-    </div>
 
 </div>
         
